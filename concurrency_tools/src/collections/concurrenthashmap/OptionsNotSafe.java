@@ -20,10 +20,16 @@ public class OptionsNotSafe implements Runnable{
 
     @Override
     public void run(){
-        for(int i=0;i<1000;i++){
-            Integer score=scores.get("小明");
-            Integer newScore=score+1;
-            scores.put("小明",newScore);
+        for(int i=0;i<1000;i++) {
+            while (true) {
+                Integer score = scores.get("小明");
+                Integer newScore = score + 1;
+                boolean b = scores.replace("小明", score, newScore);
+                //scores.put("小明",newScore);
+                if(b){
+                    break;
+                }
+            }
         }
     }
 }
