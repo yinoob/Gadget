@@ -24,6 +24,8 @@ public class CountdownLatchDemo2 {
             };
             service.submit(runnable);
         }
+
+
         Thread.sleep(5000);
         System.out.println("发令枪响,比赛开始！");
         begin.countDown();
