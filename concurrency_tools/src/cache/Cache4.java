@@ -31,10 +31,12 @@ public class Cache4<A,V> implements Computable<A,V> {
                 }
             };
             FutureTask<V> ft=new FutureTask<>(callable);
-            f=ft;
-            cache.put(arg,ft);
-            System.out.println("从FutureTask调用了计算函数");
-            ft.run();
+            f=cache.putIfAbsent(arg,ft);
+            if(f==null){
+                f=ft;
+                System.out.println("从FutureTask调用了计算函数");
+                ft.run();
+            }
         }
         return f.get();
     }
