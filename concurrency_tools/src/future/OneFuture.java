@@ -2,7 +2,7 @@ package future;
 
 import java.util.Random;
 import java.util.concurrent.*;
-
+//Future实践
 public class OneFuture {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService service= Executors.newFixedThreadPool(10);
